@@ -1,0 +1,41 @@
+<!-- FILE: register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | NJ E-SPORTS</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="blocked-uids.js"></script>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register for Free Fire Tournament</h2>
+    <form id="registerForm">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="text" placeholder="Free Fire ID" required />
+      <select required>
+        <option value="">-- Select Tournament --</option>
+        <option value="solo">Solo</option>
+        <option value="duo">Duo</option>
+        <option value="squad">Squad</option>
+      </select>
+      <input type="number" placeholder="Payment ID / UPI Ref" required />
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const uid = document.querySelector('input[placeholder="Free Fire ID"]').value;
+      if (blockedUIDs.includes(uid)) {
+        alert("This Free Fire UID is blocked from registering. Contact admin.");
+        return;
+      }
+      alert("Registration successful! Check your email for match info.");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
